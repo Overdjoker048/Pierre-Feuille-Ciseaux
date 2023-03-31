@@ -13,10 +13,11 @@ try:
             if choice == item.name:
                 check = True
                 break
-        
+
         if check:
             print(f"[Joueur] {choice}")
-            if random.randint(0, 100) <= 60:
+            choice_pourcent = random.randint(0, 100)
+            if choice_pourcent <= 33:
                 for item in items:
                     if choice == item.force:
                         print(f"[Ordinateur] {item.name}.")
@@ -26,7 +27,17 @@ try:
                             os.system("cls")
                         else:
                             os.system("clear")
-            else:
+            elif choice_pourcent <= 66:
+
+                print(f"[Ordinateur] {choice}.")
+                print("Tu as fais égalité.")
+                input("Appuyé sur entrer pour rejouer...")
+                if sys.platform == "win32":
+                    os.system("cls")
+                else:
+                    os.system("clear")
+            
+            elif choice_pourcent <= 100:
                 for item in items:
                     if choice == item.name:
                         print(f"[Ordinateur] {item.force}")
