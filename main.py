@@ -1,13 +1,50 @@
-from item import Item
 import random
-import sys
 import os
+import colorama
+import platform
 
-items = [Item(name="pierre", force="ciseaux"), Item(name="feuille", force="pierre"), Item(name="ciseaux", force="feuille")]
+class Item():
+    def __init__(self, name, force):
+        self.name = name
+        self.force   = force
+
+colorama.init()
+print(colorama.Fore.GREEN)
+
+if platform.system() == "Windows":
+    os.system("title Rock Paper Scissors")
+elif platform.system() == "Linux":
+    os.system("sudo apt-get install xtitle")
+    os.system("xtitle 'Rock Paper Scissors'")
+elif platform.system() == "Darwin":
+    os.system("touch 'Rock Paper Scissors'")
+
+items = [Item(name="rock", force="scissors"), Item(name="paper", force="rock"), Item(name="scissors", force="paper")]
+win = 0
+loose = 0
 
 try:
+
     while True:
-        choice = input("Pierre, feuille ou ciseaux ?").lower().replace(" ", "")
+        gui = f""" _____            _      _____                        _____       _                          
+| __  | ___  ___ | |_   |  _  | ___  ___  ___  ___   |   __| ___ |_| ___  ___  ___  ___  ___ 
+|    -|| . ||  _|| '_|  |   __|| .'|| . || -_||  _|  |__   ||  _|| ||_ -||_ -|| . ||  _||_ -|
+|__|__||___||___||_,_|  |__|   |__,||  _||___||_|    |_____||___||_||___||___||___||_|  |___|
+                                    |_|                                                      
+Victory: {win} Defeat: {loose}
+
+[*] Rock
+[*] Paper
+[*] Scissors
+"""
+        if platform.system() == "Windows":
+            os.system("cls")
+        elif platform.system() == "Linux":
+            os.system("reset")
+        elif platform.system() == "Darwin":
+            os.system("clear")
+        print(gui)
+        choice = input("[Game] What do you want to play:\n>>>").lower().replace(" ", "")
         check = False
         for item in items:
             if choice == item.name:
@@ -15,39 +52,28 @@ try:
                 break
 
         if check:
-            print(f"[Joueur] {choice}")
-            choice_pourcent = random.randint(0, 100)
-            if choice_pourcent <= 33:
+            print(f"\n[You] {choice}")
+            choice_pourcent = random.randint(0, 2)
+            if choice_pourcent == 0:
                 for item in items:
                     if choice == item.force:
-                        print(f"[Ordinateur] {item.name}.")
-                        print("Tu as perdu.")
-                        input("Appuyé sur entrer pour rejouer...")
-                        if sys.platform == "win32":
-                            os.system("cls")
-                        else:
-                            os.system("clear")
-            elif choice_pourcent <= 66:
-
-                print(f"[Ordinateur] {choice}.")
-                print("Tu as fais égalité.")
-                input("Appuyé sur entrer pour rejouer...")
-                if sys.platform == "win32":
-                    os.system("cls")
-                else:
-                    os.system("clear")
+                        print(f"[Computer] {item.name}.")
+                        print("[Game] You loose")
+                        loose += 1
+            elif choice_pourcent == 1:
+                print(f"[Computer] {choice}.")
+                print("[Game] You equalized")
             
-            elif choice_pourcent <= 100:
+            elif choice_pourcent == 2:
                 for item in items:
                     if choice == item.name:
-                        print(f"[Ordinateur] {item.force}")
-                        print("Tu as gagné.")
-                        input("Appuyé sur entrer pour rejouer...")
-                        if sys.platform == "win32":
-                            os.system("cls")
-                        else:
-                            os.system("clear")
+                        print(f"[Computer] {item.force}")
+                        print("[Game] You win !")
+                        win += 1
         else:
-            print("[Erreur] Ce que vous avez entrez ne fais pas partie des réponses attendues.")
+            print("\n[Error] What you entered is not part of the expected answers.")
+        
+        input("\n[Game] Press Enter to restart...")
+
 except KeyboardInterrupt:
-    print("\nA la prochaine :)")
+    print("\n[Game] See you next time :)")
