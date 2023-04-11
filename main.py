@@ -28,7 +28,7 @@ while True:
 | __  | ___  ___ | |_   |  _  | ___  ___  ___  ___   |   __| ___ |_| ___  ___  ___  ___  ___ 
 |    -|| . ||  _|| '_|  |   __|| .'|| . || -_||  _|  |__   ||  _|| ||_ -||_ -|| . ||  _||_ -|
 |__|__||___||___||_,_|  |__|   |__,||  _||___||_|    |_____||___||_||___||___||___||_|  |___|
-                                |_|                                                      
+                                    |_|                                                      
 Victory: {win} Defeat: {loose}
 
 [*] Rock
@@ -50,22 +50,22 @@ Victory: {win} Defeat: {loose}
             break
 
     if check:
-        print(f"\n[You] {choice}")
+        print(f"\n[You] {choice.title()}")
         choice_pourcent = random.randint(0, 2)
         if choice_pourcent == 0:
             for item in items:
                 if choice == item.force:
-                    print(f"[Computer] {item.name}.")
+                    print(f"[Computer] {item.name.title()}")
                     print("[Game] You loose")
                     loose += 1
         elif choice_pourcent == 1:
-            print(f"[Computer] {choice}.")
+            print(f"[Computer] {choice.title()}")
             print("[Game] You equalized")
         
         elif choice_pourcent == 2:
             for item in items:
                 if choice == item.name:
-                    print(f"[Computer] {item.force}")
+                    print(f"[Computer] {item.force.title()}")
                     print("[Game] You win !")
                     win += 1
     else:
