@@ -30,7 +30,7 @@ loose = 0
 try:
     while True:
         os.system(clear_cmd)
-        print(f""" _____            _      _____                        _____       _                          
+        print(f"""     _____            _      _____                        _____       _                          
     | __  | ___  ___ | |_   |  _  | ___  ___  ___  ___   |   __| ___ |_| ___  ___  ___  ___  ___ 
     |    -|| . ||  _|| '_|  |   __|| .'|| . || -_||  _|  |__   ||  _|| ||_ -||_ -|| . ||  _||_ -|
     |__|__||___||___||_,_|  |__|   |__,||  _||___||_|    |_____||___||_||___||___||___||_|  |___|
@@ -57,6 +57,7 @@ try:
                             print(f"[Computer] {item.name.title()}")
                             print("[Game] You loose")
                             loose += 1
+                            break
                 case 1:
                     print(f"[Computer] {choice.title()}")
                     print("[Game] You equalized")
@@ -67,6 +68,7 @@ try:
                             print(f"[Computer] {item.force.title()}")
                             print("[Game] You win !")
                             win += 1
+                            break
         else:
             print("\n[Error] What you entered is not part of the expected answers.")
         
