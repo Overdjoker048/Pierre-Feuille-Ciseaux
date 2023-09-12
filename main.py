@@ -4,9 +4,9 @@ import colorama
 import platform
 
 class Item():
-    def __init__(self, name, force):
+    def __init__(self, name: str, force: str) -> None:
         self.name = name
-        self.force   = force
+        self.force = force
 
 colorama.init()
 print(colorama.Fore.GREEN)
