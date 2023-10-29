@@ -18,7 +18,7 @@ match platform.system():
     case "Linux":
         os.system("sudo apt-get install xtitle")
         os.system("xtitle 'Rock Paper Scissors'")
-        clear_cmd = "reset"
+        clear_cmd = "clear"
     case "Darwin":
         os.system("touch 'Rock Paper Scissors'")
         clear_cmd = "clear"
