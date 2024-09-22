@@ -9,10 +9,15 @@ match platform.system():
         clear_cmd = "clear"
 
 items = {
-    "Rock": ["Paper", "Scissors"],
-    "Paper": ["Scissors", "Rock"],
-    "Scissors": ["Rock", "Paper"]
-}
+        "name": "Rock",
+        "force": "Scissors"
+    },{
+        "name": "Paper",
+        "force": "Rock"
+    },{
+        "name": "Scissors",
+        "force": "paper"
+    }
 win = 0
 loose = 0
 
@@ -33,7 +38,7 @@ try:
         choice = input("[Game] What do you want to play:\n>>>").replace(" ", "").title()
         check = False
         for item in items:
-            if choice == item.name:
+            if choice == item["name"]:
                 check = True
                 break
 
@@ -43,8 +48,8 @@ try:
             match choice_pourcent:
                 case 0:
                     for item in items:
-                        if choice == item.force:
-                            print(f"[Computer] {item.name}")
+                        if choice == item["force"]:
+                            print(f"[Computer] {item["name"]}")
                             print("[Game] You loose")
                             loose += 1
                 case 1:
@@ -52,8 +57,8 @@ try:
                     print("[Game] You equalized")
                 case 2:
                     for item in items:
-                        if choice == item.name:
-                            print(f"[Computer] {item.force}")
+                        if choice == item["name"]:
+                            print(f"[Computer] {item["force"]}")
                             print("[Game] You win !")
                             win += 1
         else:
